@@ -30,7 +30,8 @@ def download_img():
         print('download img error')
     time.sleep(1)
 
-schedule.every().hour.do(download_img)
+# schedule.every().hour.do(download_img)
+schedule.every(3700).seconds.do(download_img)
 
 if __name__ == "__main__":
     while True:
