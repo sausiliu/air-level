@@ -32,6 +32,8 @@ def download_img():
 
     time.sleep(1)
 
+
+download_img()
 # schedule.every().hour.do(download_img)
 schedule.every(3700).seconds.do(download_img)
 
