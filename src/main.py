@@ -35,7 +35,7 @@ def download_img():
 # schedule.every().hour.do(download_img)
 schedule.every(3700).seconds.do(download_img)
 
-if __main__ == "__main__":
+if __name__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(1)
