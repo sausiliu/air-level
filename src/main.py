@@ -7,6 +7,7 @@ import schedule
 url = "http://www.air-level.com/"
 context = ssl._create_unverified_context()
 
+
 def download_img():
     response = request.urlopen(url, context=context)
     html = response.read().decode('utf-8')
@@ -17,9 +18,9 @@ def download_img():
     # print(img_src)
     img_src = img_src.attrs['src']
     print(img_src)
-    imgName = 0
+    # img_name = 0
 
-    # f = open('D:\\Temp\\' + str(imgName) + ".jpg", 'wb')
+    # f = open('D:\\Temp\\' + str(img_name) + ".jpg", 'wb')
     update_time = text_center.find('h4').get_text()
     print(update_time)
     try:
@@ -28,12 +29,13 @@ def download_img():
         f.close()
     except Exception as e:
         print('download img error')
+
     time.sleep(1)
 
 # schedule.every().hour.do(download_img)
 schedule.every(3700).seconds.do(download_img)
 
-if __name__ == "__main__":
+if __main__ == "__main__":
     while True:
         schedule.run_pending()
         time.sleep(1)
