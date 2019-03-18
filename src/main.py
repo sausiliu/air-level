@@ -3,16 +3,10 @@ from urllib import request
 from bs4 import BeautifulSoup
 import time
 import schedule
-import sys
 from imp import reload
-
-reload(sys)
 
 url = "http://www.air-level.com/"
 context = ssl._create_unverified_context()
-
-# encoding=utf8
-sys.setdefaultencoding('utf8')
 
 def download_img():
     response = request.urlopen(url, context=context)
@@ -26,18 +20,16 @@ def download_img():
     print(img_src)
     # img_name = 0
 
-    # f = open('D:\\Temp\\' + str(img_name) + ".jpg", 'wb')
-    update_time = text_center.find('h4').get_text()
-    print(update_time)
+    #time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    time_str = time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))
     try:
-        f = open('../img/' + update_time + ".png", 'wb')
+        f = open('../img/' + time_str + ".png", 'wb')
         f.write((request.urlopen(img_src)).read())
         f.close()
     except Exception as e:
         print('download img error:' + e)
 
     time.sleep(1)
-
 
 download_img()
 # schedule.every().hour.do(download_img)
