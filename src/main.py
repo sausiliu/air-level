@@ -22,18 +22,22 @@ def download_img():
 
     #time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
     time_str = time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))
-    try:
-        f = open('../img/' + time_str + ".png", 'wb')
-        f.write((request.urlopen(img_src)).read())
-        f.close()
-    except Exception as e:
-        print('download img error:' + e)
+    print(time_str)
+    png_name = time_str + '.png'
+    # request.urlretrieve(img_src, 'test.png')
+    request.urlretrieve(img_src, png_name)
+    # try:
+    #     f = open('../img/' + time_str + ".png", 'wb')
+    #     f.write((request.urlopen(img_src)).read())
+    #     f.close()
+    # except Exception as e:
+    #     print('download img error:' + e)
 
     time.sleep(1)
 
 download_img()
-# schedule.every().hour.do(download_img)
-schedule.every(3700).seconds.do(download_img)
+schedule.every().hour.do(download_img)
+# schedule.every(3700).seconds.do(download_img)
 
 if __name__ == "__main__":
     while True:
