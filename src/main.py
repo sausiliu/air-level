@@ -30,7 +30,7 @@ def download_img():
         #f.close()
         urlretrieve(img_src, time_str)
     except Exception as e:
-        print('download img error:' + e)
+        print('download img error:' + str(e))
 
     time.sleep(1)
 
