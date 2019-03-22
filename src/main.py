@@ -23,7 +23,7 @@ def download_img():
 
     #time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
     time_str = time.strftime('%Y-%m-%d %H_%M_%S', time.localtime(time.time()))
-    png_name = time_str + '.png'
+    png_name = '../img/' + time_str + '.png'
     try:
         print('xxxxx')
         #f = open('../img/' + time_str + ".png", 'wb+')
