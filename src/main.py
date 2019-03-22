@@ -3,6 +3,7 @@ from urllib import request
 from bs4 import BeautifulSoup
 import time
 import schedule
+from urllib.request import urlretrieve
 from imp import reload
 
 url = "http://www.air-level.com/"
@@ -21,23 +22,21 @@ def download_img():
     # img_name = 0
 
     #time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-    time_str = time.strftime('%Y-%m-%d %H:%M',time.localtime(time.time()))
-    print(time_str)
-    png_name = time_str + '.png'
-    # request.urlretrieve(img_src, 'test.png')
-    request.urlretrieve(img_src, png_name)
-    # try:
-    #     f = open('../img/' + time_str + ".png", 'wb')
-    #     f.write((request.urlopen(img_src)).read())
-    #     f.close()
-    # except Exception as e:
-    #     print('download img error:' + e)
+    time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    try:
+        print('xxxxx')
+        #f = open('../img/' + time_str + ".png", 'wb+')
+        #f.write((request.urlopen(img_src)).read())
+        #f.close()
+        urlretrieve(img_src, time_str)
+    except Exception as e:
+        print('download img error:' + e)
 
     time.sleep(1)
 
 download_img()
-schedule.every().hour.do(download_img)
-# schedule.every(3700).seconds.do(download_img)
+# schedule.every().hour.do(download_img)
+schedule.every(3).seconds.do(download_img)
 
 if __name__ == "__main__":
     while True:
