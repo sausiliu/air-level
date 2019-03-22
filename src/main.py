@@ -22,13 +22,14 @@ def download_img():
     # img_name = 0
 
     #time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-    time_str = time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    time_str = time.strftime('%Y-%m-%d %H_%M_%S', time.localtime(time.time()))
+    png_name = time_str + '.png'
     try:
         print('xxxxx')
         #f = open('../img/' + time_str + ".png", 'wb+')
         #f.write((request.urlopen(img_src)).read())
         #f.close()
-        urlretrieve(img_src, time_str)
+        urlretrieve(img_src, png_name)
     except Exception as e:
         print('download img error:' + str(e))
 
